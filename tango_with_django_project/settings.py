@@ -21,6 +21,11 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 # Path to static files
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
+# Path to media files
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = '/media/'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -30,7 +35,7 @@ SECRET_KEY = 'ub8v(-_1h87us9e=d*!z8-6zyi1el&1$px^od)oi64qi2a=jjg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -68,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
