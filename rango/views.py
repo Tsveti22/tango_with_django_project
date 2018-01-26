@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from rango.models import Category
 from rango.models import Page
 from rango.forms import CategoryForm
+from rango.forms import PageForm
 
 # Index page
 def index(request):
@@ -81,3 +82,24 @@ def add_category(request):
     # Will handl th bad form, new form or no form supplied cases.
     # Render the form with error messages (if any).
     return render(request,'rango/add_category.html', {'form': form})
+
+# Add page view
+def add_page(request,category_name_slug):
+    try:
+        category = Category.objects.get(slug=category_name_slug)
+    except Category.DoesNotExist:
+        catgory = None
+    form = PageForm()
+    if request.method == 'POST':
+        form = PageForm(request.POST)
+        if form.is_valid():
+            if category:
+                page = form_save(commit=False)
+                page.category = category
+                page.views = 0
+                page.save()
+                return show_category(request, category_name_slug)
+        else:
+            print(form.errors)
+    context_dict = {'form': form, 'category': category}
+    return render(request, 'rango/add_page.html', context_dict)

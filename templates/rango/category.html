@@ -17,10 +17,14 @@
         {% else %}
           <strong>No pages currently in category.</strong>
         {% endif %}
-      {% else %}
-        The specified category does not exist!
-      {% endif %}
     </div>
+
+    <div>
+      <a href="{% url 'add_page' category.slug %}">Add Page</a> <br/>
+    </div>
+    {% else %}
+      The specified category does not exist!
+    {% endif %}
 
     <!--- Show link to index page --->
     <div>
