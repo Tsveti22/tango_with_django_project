@@ -10,10 +10,11 @@ def index(request):
     # Place the list in context_dict dictionary
     # that will be passed to the template engine
     category_list = Category.objects.order_by('-likes')[:5]
+    page_list = Page.objects.order_by('-views')[:5]
 
     # Construct a dictionary to pass to the template engine as its context
     # The key boldmessage is the same as {{ boldmessage }} in the template
-    context_dict= {'categories': category_list}
+    context_dict= {'categories': category_list, "pages": page_list}
 
     # Return a rendered response to send to the client
     # The first param is the template we wish to use
@@ -52,3 +53,5 @@ def show_category(request, category_name_slug):
 
     # Render the response and return it to the client
     return render(request, 'rango/category.html', context_dict)
+
+    
