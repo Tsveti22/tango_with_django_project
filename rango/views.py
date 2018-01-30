@@ -26,6 +26,10 @@ def index(request):
 # About page
 def about(request):
     context_dict = {}
+    # Print out the type of the method (GET or POST)
+    print(request.method)
+    # Print out the username (or AnonymousUser if no one is logged in)
+    print(request.user)
     return render(request, 'rango/about.html', context=context_dict)
 
 # Find categories and pages
