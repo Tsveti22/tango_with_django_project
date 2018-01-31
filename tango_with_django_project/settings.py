@@ -29,6 +29,9 @@ MEDIA_URL = '/media/'
 # Redirect URL
 LOGIN_URL = '/rango/login'
 
+# Enable browser-length sessions
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
